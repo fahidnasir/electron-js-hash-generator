@@ -1,0 +1,44 @@
+body {
+	margin: 0;
+  background: #3b3b3b;
+  color: #ffffff;
+	font: 13px Arial, Helvetica, sans-serif;
+	display: grid;
+}
+
+main {
+  height: 90vh;
+  width: 90vw;
+	display: grid;
+	align-items: center;
+	justify-self: center;
+}
+
+main .title {
+	background: #00aae6;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+main > .control {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-content: center;
+  justify-content: center;
+}
+
+main > .control > label {
+	font-size: 16px;
+  align-self: center;
+}
+
+input[type='text'],
+input[type='password'] {
+  padding: 15px;
+  border: 1px solid #003300;
+  /* border-radius: 5px; */
+}
+
+button {
+  padding: 15px;
+}

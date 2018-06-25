@@ -1,0 +1,23 @@
+{
+  "name": "electorn-js-md5-generator",
+  "version": "1.0.0",
+  "description": "MD5 hash generator desktop made with Electron JS.",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fahidnasir/electorn-js-md5-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fahidnasir/electorn-js-md5-generator/issues"
+  },
+  "homepage": "https://github.com/fahidnasir/electorn-js-md5-generator#readme",
+  "devDependencies": {
+    "electron": "^2.0.3"
+  }
+}
