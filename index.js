@@ -1,5 +1,18 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 
+require('electron-context-menu')({
+  append: (params, browserWindow) => [
+    {
+      label: 'Actions',
+      labels: {
+        cut: 'Configured Cut',
+        copy: 'Configured Copy',
+        paste: 'Configured Paste'
+      }
+    }
+  ]
+});
+
 var crypto = require('crypto');
 var fs = require('fs');
 
@@ -14,22 +27,19 @@ function createWindow() {
   // and load the index.html of the app.
   win.loadFile('index.html');
 
-  ipcMain.on('onFileDrag', (event, filePath) => {
-    console.log(filePath);
+  ipcMain.on('calculateMD5', (event, filePath) => {
+    // console.log(filePath);
 
     // change the algo to sha1, sha256 etc according to your requirements
-    var algo = 'md5';
-    var shasum = crypto.createHash(algo);
-
-    var s = fs.createReadStream(filePath);
-    var checksumData;
-    s.on('data', function(d) {
-      shasum.update(d);
+    calculateMD5(filePath, checksumCalculated => {
+      event.sender.send('checksumCalculated', checksumCalculated);
     });
-    s.on('end', function() {
-      checksumData = shasum.digest('hex');
-      console.log(checksumData);
-      event.sender.send('checksumCalculated', checksumData);
+  });
+
+  ipcMain.on('validateMD5', (event, filePath, checksumValue) => {
+    calculateMD5(filePath, checksumCalculated => {
+      const result = checksumCalculated === checksumValue;
+      event.sender.send('checksumValidated', result);
     });
   });
 
@@ -43,6 +53,21 @@ function createWindow() {
     // when you should delete the corresponding element.
     win = null;
   });
+
+  function calculateMD5(filePath, callback) {
+    var algo = 'md5';
+    var shasum = crypto.createHash(algo);
+    var s = fs.createReadStream(filePath);
+    var checksumCalculated;
+    s.on('data', function(d) {
+      shasum.update(d);
+    });
+    s.on('end', function() {
+      checksumCalculated = shasum.digest('hex');
+      console.log(checksumCalculated);
+      callback(checksumCalculated);
+    });
+  }
 }
 
 // This method will be called when Electron has finished

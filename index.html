@@ -13,19 +13,22 @@
 	<main>
 		<h1 class="title">Checksum Generator</h1>
 		<div class="control">
-			<label for="fileName">File Name</label>
-			<input type="text" name="fileName" id="fileName">
+			<label for="filePath">File Path</label>
+			<input type="text" readonly name="filePath" id="filePath">
 		</div>
 		<div class="control">
-			<label for="filePath">File Path</label>
-			<input type="text" name="filePath" id="filePath">
+			<label for="fileName">File Name</label>
+			<input type="text" readonly name="fileName" id="fileName">
 		</div>
 		<div class="control">
 			<label for="checksum">MD5 Checksum</label>
 			<input type="text" name="checksum" id="checksum">
 		</div>
 
-		<button type="submit" name="generate">Generate</button>
+		<div class="control">
+			<button type="button" style="margin-right: 10px;" name="verify" onclick="onVerify();">Verify</button>
+			<button type="submit" name="generate" onclick="onGenerate();">Generate</button>
+		</div>
 	</main>
 	<script src="public/js/site.js">
 	</script>
