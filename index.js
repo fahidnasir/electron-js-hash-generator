@@ -32,7 +32,13 @@ function createWindow() {
 
     // change the algo to sha1, sha256 etc according to your requirements
     calculateMD5(filePath, checksumCalculated => {
-      event.sender.send('checksumCalculated', checksumCalculated);
+      const stats = fs.statSync(filePath);
+      const fileSizeInBytes = stats.size;
+      event.sender.send(
+        'checksumCalculated',
+        checksumCalculated,
+        fileSizeInBytes
+      );
     });
   });
 

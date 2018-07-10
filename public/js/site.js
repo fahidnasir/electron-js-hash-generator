@@ -1,6 +1,7 @@
 var inpFileName = document.querySelector('#fileName');
 var inpFilePath = document.querySelector('#filePath');
 var inpChecksum = document.querySelector('#checksum');
+var inpFileSize = document.querySelector('#fileSize');
 
 document.ondragover = document.ondrop = ev => {
   ev.preventDefault();
@@ -14,17 +15,13 @@ document.body.ondrop = ev => {
   inpFileName.setAttribute('value', ev.dataTransfer.files[0].name);
   inpFilePath.setAttribute('value', ev.dataTransfer.files[0].path);
 
-  // ipcRenderer.send('calculateMD5', ev.dataTransfer.files[0].path);
-  // ipcRenderer.on('checksumCalculated', (event, arg) => {
-  //   console.log(arg);
-  //   inpChecksum.setAttribute('value', arg);
-  // });
+  ipcRenderer.send('calculateMD5', ev.dataTransfer.files[0].path);
   ev.preventDefault();
 };
 
-ipcRenderer.on('checksumCalculated', (event, arg) => {
-  console.log(arg);
-  inpChecksum.setAttribute('value', arg);
+ipcRenderer.on('checksumCalculated', (event, checksumValue, fileSize) => {
+  inpChecksum.setAttribute('value', checksumValue);
+  inpFileSize.setAttribute('value', fileSize);
 });
 
 function onGenerate() {
@@ -33,9 +30,9 @@ function onGenerate() {
   }
 }
 
-ipcRenderer.on('checksumValidated', (event, arg) => {
+ipcRenderer.on('checksumValidated', (event, isMatch) => {
   console.log('Verifying');
-  if (arg) {
+  if (isMatch) {
     console.log('Validated');
     dialog.showMessageBox(remote.getCurrentWindow(), {
       type: 'info',
