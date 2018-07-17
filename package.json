@@ -4,21 +4,30 @@
   "description": "MD5 hash generator desktop made with Electron JS.",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fahidnasir/electron-js-md5-generator.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Fahid Nasir",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fahidnasir/electron-js-md5-generator/issues"
   },
   "homepage": "https://github.com/fahidnasir/electron-js-md5-generator#readme",
+  "build": {
+    "appId": "utility.md5",
+    "mac": {
+      "category": "fahidnasir.utility.md5"
+    }
+  },
   "devDependencies": {
-    "electron": "^2.0.3"
+    "electron": "^2.0.5",
+    "electron-builder": "^20.22.0"
   },
   "dependencies": {
     "electron-context-menu": "^0.10.0"
