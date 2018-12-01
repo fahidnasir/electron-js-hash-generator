@@ -14,11 +14,21 @@ main {
 	justify-self: center;
 }
 
-main .title {
-	background: #00aae6;
-	padding: 15px;
+.title {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  background: #00aae6;
 	border-radius: 10px;
 }
+
+.title h1 {
+  padding-left: 15px;
+}
+
+.title button {
+  float: right;
+}
+
 
 .control {
   display: grid;

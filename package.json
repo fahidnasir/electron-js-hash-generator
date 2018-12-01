@@ -28,8 +28,5 @@
   "devDependencies": {
     "electron": "^3.0.10",
     "electron-builder": "^20.38.2"
-  },
-  "dependencies": {
-    "electron-context-menu": "^0.10.1"
   }
 }

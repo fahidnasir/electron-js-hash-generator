@@ -1,18 +1,4 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-
-require('electron-context-menu')({
-  append: (params, browserWindow) => [
-    {
-      label: 'Actions',
-      labels: {
-        cut: 'Configured Cut',
-        copy: 'Configured Copy',
-        paste: 'Configured Paste'
-      }
-    }
-  ]
-});
-
 var crypto = require('crypto');
 var fs = require('fs');
 

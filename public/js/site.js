@@ -9,6 +9,22 @@ let currentFileSize = 0;
 const inpfileSizeType = document.querySelector('#fileSizeType');
 const inpchecksumType = document.querySelector('#checksumType');
 
+document.getElementById('btnOpenFile').addEventListener('click', ev => {
+  ev.preventDefault();
+
+  dialog.showOpenDialog(
+    { properties: ['openFile', 'createDirectory'] },
+    (filePaths, bookmarks) => {
+      inpfileSizeType.disabled = false;
+
+      inpFileName.setAttribute('value', filePaths[0].replace(/^.*[\\\/]/, ''));
+      inpFilePath.setAttribute('value', filePaths[0]);
+
+      ipcRenderer.send('calculateHash', filePaths[0]);
+    }
+  );
+});
+
 document.querySelector('#btnGenerate').addEventListener('click', () => {
   if (inpFilePath.value) {
     ipcRenderer.send('calculateHash', inpFilePath.value);
