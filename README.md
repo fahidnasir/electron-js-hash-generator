@@ -1,2 +1,2 @@
-# electron-js-md5-generator
-MD5 hash generator desktop made with Electron JS.
+# electron-js-hash-generator
+Hash hash generator desktop made with Electron JS.

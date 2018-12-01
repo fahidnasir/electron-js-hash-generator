@@ -1,7 +1,7 @@
 {
-  "name": "electron-js-md5-generator",
+  "name": "hash-generator",
   "version": "1.0.0",
-  "description": "MD5 hash generator desktop made with Electron JS.",
+  "description": "Hash hash generator desktop made with Electron JS.",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
@@ -10,26 +10,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fahidnasir/electron-js-md5-generator.git"
+    "url": "git+https://github.com/fahidnasir/electron-js-hash-generator.git"
   },
   "keywords": [],
   "author": "Fahid Nasir",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fahidnasir/electron-js-md5-generator/issues"
+    "url": "https://github.com/fahidnasir/electron-js-hash-generator/issues"
   },
-  "homepage": "https://github.com/fahidnasir/electron-js-md5-generator#readme",
+  "homepage": "https://github.com/fahidnasir/electron-js-hash-generator#readme",
   "build": {
-    "appId": "utility.md5",
+    "appId": "utility.hasher",
     "mac": {
-      "category": "fahidnasir.utility.md5"
+      "category": "fahidnasir.utility.hasher"
     }
   },
   "devDependencies": {
-    "electron": "^2.0.5",
-    "electron-builder": "^20.22.0"
+    "electron": "^3.0.10",
+    "electron-builder": "^20.38.2"
   },
   "dependencies": {
-    "electron-context-menu": "^0.10.0"
+    "electron-context-menu": "^0.10.1"
   }
 }

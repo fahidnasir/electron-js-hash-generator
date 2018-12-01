@@ -27,11 +27,11 @@ function createWindow() {
   // and load the index.html of the app.
   win.loadFile('index.html');
 
-  ipcMain.on('calculateMD5', (event, filePath) => {
+  ipcMain.on('calculateHash', (event, filePath) => {
     // console.log(filePath);
 
     // change the algo to sha1, sha256 etc according to your requirements
-    calculateMD5(filePath, checksumCalculated => {
+    calculateHash(filePath, checksumCalculated => {
       const stats = fs.statSync(filePath);
       const fileSizeInBytes = stats.size;
       event.sender.send(
@@ -42,8 +42,8 @@ function createWindow() {
     });
   });
 
-  ipcMain.on('validateMD5', (event, filePath, checksumValue) => {
-    calculateMD5(filePath, checksumCalculated => {
+  ipcMain.on('validateHash', (event, filePath, checksumValue) => {
+    calculateHash(filePath, checksumCalculated => {
       const result = checksumCalculated === checksumValue;
       event.sender.send('checksumValidated', result);
     });
@@ -60,7 +60,7 @@ function createWindow() {
     win = null;
   });
 
-  function calculateMD5(filePath, callback) {
+  function calculateHash(filePath, callback) {
     var algo = 'md5';
     var shasum = crypto.createHash(algo);
     var s = fs.createReadStream(filePath);
