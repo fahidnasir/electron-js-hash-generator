@@ -1,32 +1,36 @@
 {
-  "name": "hash-generator",
-  "version": "1.0.0",
-  "description": "Hash hash generator desktop made with Electron JS.",
-  "main": "index.js",
-  "scripts": {
-    "start": "electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fahidnasir/electron-js-hash-generator.git"
-  },
-  "keywords": [],
-  "author": "Fahid Nasir",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fahidnasir/electron-js-hash-generator/issues"
-  },
-  "homepage": "https://github.com/fahidnasir/electron-js-hash-generator#readme",
-  "build": {
-    "appId": "utility.hasher",
-    "mac": {
-      "category": "fahidnasir.utility.hasher"
-    }
-  },
-  "devDependencies": {
-    "electron": "^9.0.0",
-    "electron-builder": "^22.6.1"
-  }
+	"name": "hash-generator",
+	"version": "1.0.0",
+	"description": "Hash hash generator desktop made with Electron JS.",
+	"main": "index.js",
+	"scripts": {
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder",
+		"postinstall": "electron-builder install-app-deps"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/fahidnasir/electron-js-hash-generator.git"
+	},
+	"keywords": [],
+	"author": {
+		"name": "Fahid Nasir",
+		"email": "fahidnasir@hotmail.com"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/fahidnasir/electron-js-hash-generator/issues"
+	},
+	"homepage": "https://github.com/fahidnasir/electron-js-hash-generator#readme",
+	"build": {
+		"appId": "fahidnasir.utility.hasher",
+		"mac": {
+			"category": "fahidnasir.utility.hasher"
+		}
+	},
+	"devDependencies": {
+		"electron": "^9.0.0",
+		"electron-builder": "^22.6.1"
+	}
 }
