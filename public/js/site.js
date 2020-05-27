@@ -20,7 +20,7 @@ document.getElementById('btnOpenFile').addEventListener('click', async (ev) => {
 	if (files.canceled) return;
 	let filePath = files.filePaths[0];
 
-	// inpfileSizeType.disabled = false;
+	inpfileSizeType.disabled = false;
 
 	inpFilePath.setAttribute('value', filePath);
 	inpFileName.setAttribute('value', filePath.replace(/^.*[\\\/]/, ''));
